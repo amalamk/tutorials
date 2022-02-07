@@ -1,0 +1,66 @@
+package tutorial1;
+import java.io.*;
+public class Exp12 {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		File F = new File("numbers.txt");
+        File F1 = new File("odd.txt");
+       File F2 = new File("even.txt");
+
+        FileOutputStream fout = new FileOutputStream("numbers.txt", true);
+        BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter Data numbers");
+        String s=br1.readLine();
+        char ch[] = s.toCharArray();
+        for (int i = 0; i < s.length(); i++)
+        {
+            fout.write(ch[i]);
+        }
+        System.out.println("Data added");
+
+        FileReader fin = new FileReader("numbers.txt");
+        BufferedReader br = new BufferedReader(fin);
+        String inp = br.readLine();
+        FileWriter oddfr = new FileWriter("odd.txt");
+        FileWriter evenfr = new FileWriter("even.txt");
+        for(String element: inp.split(" ")){
+            if(Integer.parseInt(element)%2==0) {
+                evenfr.write(element+" ");
+            }
+            else {
+                oddfr.write(element+ " ");
+            }
+        }
+        oddfr.close();
+        evenfr.close();
+
+        FileInputStream f = new FileInputStream("numbers.txt");
+        FileInputStream f1 = new FileInputStream("odd.txt");
+        FileInputStream f2 = new FileInputStream("even.txt");
+
+        System.out.println(" numbers.txt -->>");
+        int i=0;
+        while ((i = f.read()) != -1) {
+            char c = (char) i;
+            System.out.print(c);
+        }
+        System.out.println("\n odd.txt file -->> ");
+         i=0;
+        while ((i = f1.read()) != -1) {
+            char c = (char) i;
+            System.out.print(c);
+        }
+        System.out.println("\n even.txtfile -->>");
+        i=0;
+        while ((i = f2.read()) != -1) {
+            char c = (char) i;
+            System.out.print(c);
+        }
+
+
+
+	}
+
+}
