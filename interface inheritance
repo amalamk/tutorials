@@ -1,0 +1,131 @@
+package module1;
+ abstract classAnimal{
+	intlegs;
+	String name;
+	Animal(intlegs){
+		this.legs = legs;
+	}
+
+	voidwalk(intlegs) {
+		System.out.println("This animal walks on "+(legs)+(" legs."));
+	}
+	voideat() {
+		System.out.println("");
+	}
+}
+
+class Spider extendsAnimal{
+	Spider(intlegs){
+		super(legs);
+	}
+	voideat() {
+		System.out.println("Spider eats insects.");
+	}
+}
+
+interfacePet{
+	String getName();
+	voidsetName(String name);
+	voidplay();
+}
+
+
+
+class Cat extends Animal implementsPet{
+
+	Cat (intlegs, String name){
+		super(legs);
+		this.name = name;
+	}
+
+
+	public String getName() {
+		returnname;
+	}
+
+	
+	publicvoidsetName(String name) {
+		
+		this.name = name;
+	}
+
+	
+	publicvoidplay() {
+		
+		System.out.println("Cat likes to fight");
+	}	
+
+	voideat() {
+		System.out.println("Cat eats fishes");
+	}
+}
+
+class Fish extends Animal implementsPet{
+
+	Fish(intlegs,Stringname) {
+		super(legs);
+		this.name = name;
+		
+	}
+
+	
+	public String getName() {
+		
+		returnname;
+	}
+
+	
+	publicvoidsetName(String name) {
+		
+		this.name = name;
+	}
+
+	
+	publicvoidplay() {
+		
+		System.out.println("Fish swims);
+	}
+
+	voideat() {
+		System.out.println("Fish eats plants");
+	}
+	voidwalk(intlegs) {
+		System.out.println("Fish has no legs");
+	}
+
+}
+
+
+publicclassInterfaceInheritanceDemo {
+
+	publicstaticvoid main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+		System.out.println("FISH");
+		Fish f = new Fish(0,"Mimi");
+		System.out.println("This fish's name is "+f.getName());
+		f.eat();
+		f.walk(0);
+             f.play();
+		f.setName("Momo");
+		System.out.println("This fish's name is "+f.getName()+"\n");
+
+		System.out.println("CAT");
+		Cat c = new Cat(4,"Fluffy");
+		System.out.println("This cat's name is "+c.getName());
+		c.walk(4);
+		c.eat();
+             c.play();
+		c.setName("Moose");
+		System.out.println("This cat's name is "+c.getName()+"\n");
+
+		
+		System.out.println("SPIDER");
+		Spider s = newSpider(8);
+		s.eat();
+		s.walk(8);	
+}
+
+}
+
