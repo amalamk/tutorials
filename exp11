@@ -1,0 +1,53 @@
+package tutorial1;
+import java.io.*;
+public class Exp11 {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		//create file sample.txt
+		File f1 = new File("sample.txt");
+		if (f1.createNewFile())
+		System.out.println("File 1 created: "+f1.getName());
+		else
+		System.out.println("File 1: '"+f1.getName()+"' already exists.");
+
+		//store the inputs given from the keyboard
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("enter data:");
+		String buffer = br.readLine();
+
+		FileWriter fw = new FileWriter("sample.txt");
+		fw.write(buffer);
+		System.out.println("contents writed to File 1 \n");
+		fw.close();
+
+		//new file is generated with name "new-sample.txt"
+		File f2 = new File("new-sample.txt");
+		if (f2.createNewFile())
+		System.out.println("File 2 created: "+f2.getName());
+		else
+		System.out.println("File 2: '"+f2.getName()+"' already exists.");
+
+		//add contents from sample.txt
+
+		FileReader fr1 = new FileReader ("sample.txt");
+		BufferedReader br1 = new BufferedReader(fr1);
+		FileWriter fw2 = new FileWriter("new-sample.txt");
+		while((br1.readLine()) != null) {
+		fw2.write(buffer);
+		System.out.println("contents written to File 2");
+		fw2.close();
+		}
+		br1.close();
+
+		//display file2 contents
+		FileReader fr2 = new FileReader ("new-sample.txt");
+		BufferedReader br2 = new BufferedReader(fr2);
+		String s;
+		while((s=br2.readLine()) != null) {
+		System.out.println(s);
+		}
+		br2.close();
+	}
+
+}
