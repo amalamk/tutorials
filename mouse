@@ -1,0 +1,67 @@
+package mouseevent;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class Exp16   extends Frame implements MouseListener,MouseMotionListener{
+	 Exp16(){
+	        setSize(500,500);
+	        setVisible(true);
+	        addWindowListener(new WindowAdapter() {
+	            public void windowClosing(WindowEvent e) {
+	                System.exit(0);
+	            }
+	        });
+
+	        addMouseListener(this);
+	        addMouseMotionListener(this);
+
+	    }
+
+	    public void mouseClicked(MouseEvent e) {
+	        setBackground(Color.GREEN);
+	        setTitle("Click");
+	        System.out.println("Click");
+	    }
+	    public void mouseEntered(MouseEvent e) {
+	        setBackground(Color.ORANGE);
+	        setTitle("Entered");
+	        System.out.println("Entered");
+	    }
+	    public void mouseExited(MouseEvent e) {
+	        setBackground(Color.CYAN);
+	        setTitle("Exited");
+	        System.out.println("Exited");
+	    }
+	    public void mousePressed(MouseEvent e) {
+	        setBackground(Color.RED);
+	        setTitle("Pressed");
+	        System.out.println("Pressed");
+	    }
+	    public void mouseReleased(MouseEvent e) {
+	        setBackground(Color.ORANGE);
+	        System.out.println("Mouse Released");
+	    }
+
+	    public void mouseDragged(MouseEvent e) {
+	        setBackground(Color.GRAY);
+	        setTitle("Dragged");
+	        System.out.println("Being Dragged");
+	        Graphics g=getGraphics();
+	        g.fillOval(e.getX(),e.getY(),10,10);
+
+	    }
+
+	    public void mouseMoved(MouseEvent e) {
+	        setBackground(Color.MAGENTA);
+	        setTitle("Moving");
+	        System.out.println("Moving");
+	        Graphics g=getGraphics();
+	        String txt = "Hi, my string is being moved";
+	        g.drawString(txt,e.getX(),e.getY());
+	    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Exp16();
+	}
+
+}
