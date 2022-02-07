@@ -1,0 +1,39 @@
+package module1; 
+importjava.util.Scanner;
+
+publicclassTrycatchfinally {
+
+	publicstaticvoid main(String[] args) {
+		// TODO Auto-generated method stub
+    Scanner sc=new Scanner (System.in);
+intn1,n2,d;
+charc;
+do
+   {
+System.out.println("The program to perform divison");
+System.out.println("Enter the  Number-1");
+n1=sc.nextInt();
+System.out.println("Enter the Number-2");
+n2=sc.nextInt();
+
+try {
+d=n1/n2;
+System.out.println("result "+d);	
+    }
+catch(ArithmeticExceptionE)
+     {
+	System.out.println("/by zero");
+     }
+finally
+     {
+	System.out.println("End of operation");
+     }
+System.out.println("Do you want  to continue y or n");
+c=sc.next().charAt(0);
+     }
+while(c=='y'||c=='Y');
+sc.close();
+   }
+	}
+
+
