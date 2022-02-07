@@ -1,0 +1,68 @@
+package tutorial1;
+import java.util.*;
+import java.util.Random;
+class EvenThread1 extends Thread
+{
+    int x;
+    EvenThread1(int n)
+    {
+    	x=n;
+    }
+	public void run()
+	{
+	    int square=x*x;
+	    System.out.println("The Square is "+square);
+	}
+}
+class OddThread1 extends Thread
+
+{	int x;
+    OddThread1(int n)
+    {
+    	x=n;
+    }
+	public void run()
+	{
+	 int Cube =x*x*x;
+	 System.out.println("The cube is " +Cube);
+	}
+}
+
+class RandThread1 extends Thread
+{
+public void run()
+	{ //create random number and check odd/even}
+	
+	   
+	  Random n=new Random();
+	  for (int i=0;i<10;i++)
+	  {   
+		  int randomInteger = n.nextInt(100);
+		  System.out.println("Random integer"+randomInteger);
+		  if (randomInteger %2==0)
+		  {
+			 EvenThread1 e=new EvenThread1(randomInteger);
+			  e.start();
+		  }
+		  else 
+		  {    OddThread1 o=new OddThread1(randomInteger);
+			  o.start();
+		  }
+	try
+	{
+		Thread.sleep(1000);
+	} catch(Exception e)
+	{
+		System .out.println(e);
+	}
+	
+		  }
+	  }
+}
+public class Exp13 {
+
+	public static void main(String[] args) {
+		RandThread1 r=new RandThread1();
+       r.start();
+	}
+}
