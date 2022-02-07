@@ -1,0 +1,151 @@
+package tutorial1;
+import java.util.Scanner;
+class Account{
+    long act_no;
+    String name;
+    String act_type;
+    float balance;
+
+    Scanner sc = new Scanner(System.in);
+     void withdraw(Account arr[],int n) {
+        System.out.println("Enter the Account no: ");
+        long act = sc.nextLong();
+        int flag = 0;
+        for (int i=0;i<n;i++){
+            if(arr[i].act_no == act) {
+                flag = 1;
+                System.out.println("Enter the amount to be withdrawn: ");
+                int amt = sc.nextInt();
+                try {
+                    if (amt <= 0) {
+                        throw new ArithmeticException("InvalidAmountException");
+                    }
+                    if (amt > arr[i].balance) {
+                        throw new Exception("InsufficientFundsException");
+                    }
+                    arr[i].balance -= amt;
+                }catch(ArithmeticException e){
+                    System.out.println("No amount withdrawn");
+                }catch (Exception e){
+                    System.out.println("Insufficient Balance");
+                }
+            }
+        }
+        if(flag!=1){
+            System.out.println("Incorrect Account number!");
+        }
+    }
+
+    void deposit(Account arr[],int n) {
+        System.out.println("Enter the Account no: ");
+        long act = sc.nextLong();
+        int flag = 0;
+        for (int i=0;i<n;i++) {
+            if (arr[i].act_no == act) {
+                flag = 1;
+                try {
+                    System.out.println("Enter the amount to be deposited: ");
+                    int amt = sc.nextInt();
+
+                    if (amt <= 0) {
+                        throw new ArithmeticException("InvalidAmountException");
+                    }
+                    arr[i].balance += amt;
+
+                }catch (ArithmeticException e){
+                    System.out.println("No amount deposited");
+                }
+            }
+            if (flag != 1) {
+                System.out.println("Incorrect Account number!");
+            }
+        }
+
+    }
+
+    void Display() {
+        System.out.println("Account no: "+act_no+"\nAccount Type: "+act_type+"\nAccount holder name: "+name+
+                "\nBalance: "+balance);
+    }
+
+    void Search(Account arr[],int n) {
+        System.out.println("Enter the Account no: ");
+        long act = sc.nextLong();
+        int flag = 0;
+        for (int i=0;i<n;i++){
+            if(arr[i].act_no == act){
+                arr[i].Display();
+                flag = 1;
+            }
+        }
+        if(flag!=1){
+            System.out.println("Incorrect Account number!");
+        }
+    }
+
+}
+public class BankDetailsForm {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Scanner sc =new Scanner (System.in);
+		System.out.println("How many customers do you want to input?");
+        int n = sc.nextInt();
+
+        Account[] customers = new Account[n];
+
+        for(int i=0;i<n;i++){
+            customers[i] = new Account();
+            System.out.println("Customer Account Type: ");
+            customers[i].act_type = sc.next();
+
+            System.out.println("Customer Account Number: ");
+            customers[i].act_no = sc.nextLong();
+
+            System.out.println("Customer Name: ");
+            customers[i].name = sc.next();
+
+            System.out.println("Account Balance: ");
+            customers[i].balance = sc.nextLong();
+        }
+
+
+        int c;
+        do {
+            System.out.println("\n\n***Banking System Application***\n1.Display all account details + \"\n 2. Search by Account number\n\""+ " 3. Deposit the amount \n" + " 4. Withdraw the amount \n"+ " 5.Exit\n");
+
+            c = sc.nextInt();
+
+
+
+            switch(c) {
+                case 1:
+                    for(int i=0;i<n;i++) {
+                        customers[i].Display();
+                    }
+                    break;
+
+                case 2:
+                    customers[1].Search(customers,n);
+                    break;
+
+                case 3:
+                    customers[1].deposit(customers,n);
+                    break;
+
+                case 4:
+                    customers[1].withdraw(customers,n);
+                    break;
+
+                case 5: System.out.println("Thank you, Visit again \n");
+                  c=5;     
+
+            }
+
+        }while(c!=5);
+  sc.close();
+    }
+
+}
+	
